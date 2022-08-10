@@ -30,7 +30,7 @@ class _MyFuruteBuildertestState extends State<MyFuruteBuildertest> {
             future: createOrderMessage(),
             builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
               List<Widget> children;
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.done) {
                 children = [
                   const Icon(
                     Icons.check_circle_outline,
@@ -42,7 +42,7 @@ class _MyFuruteBuildertestState extends State<MyFuruteBuildertest> {
                     child: Text('Result: ${snapshot.data}'),
                   )
                 ];
-              } else if (snapshot.hasError) {
+              } else if (snapshot.connectionState == ConnectionState.none) {
                 children = [
                   const Icon(
                     Icons.error_outline,
