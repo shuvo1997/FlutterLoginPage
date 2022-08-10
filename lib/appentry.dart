@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    MyFuruteBuildertest(),
+    MyFutureBuildertest(),
     Text(
       'Search Page',
       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -31,47 +31,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              label: 'Home Page',
-              backgroundColor: Colors.blue,
-              icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-              label: 'Search Page',
-              backgroundColor: Colors.blue,
-              icon: Icon(Icons.search)),
-          BottomNavigationBarItem(
-              label: 'Profile Page',
-              backgroundColor: Colors.blue,
-              icon: Icon(Icons.person)),
-        ],
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.shifting,
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        iconSize: 30,
-        onTap: _onItemTapped,
-        elevation: 5,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _widgetOptions.elementAt(_selectedIndex),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/login');
-                },
-                child: Text('Go Back to Login'))
-          ],
+        appBar: AppBar(
+          title: Text('Home'),
         ),
-      ),
-    );
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+                label: 'Home Page',
+                backgroundColor: Colors.blue,
+                icon: Icon(Icons.home)),
+            BottomNavigationBarItem(
+                label: 'Search Page',
+                backgroundColor: Colors.blue,
+                icon: Icon(Icons.search)),
+            BottomNavigationBarItem(
+                label: 'Profile Page',
+                backgroundColor: Colors.blue,
+                icon: Icon(Icons.person)),
+          ],
+          showUnselectedLabels: true,
+          type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          iconSize: 30,
+          onTap: _onItemTapped,
+          elevation: 5,
+        ),
+        body: Center(child: _widgetOptions.elementAt(_selectedIndex)));
   }
 }
