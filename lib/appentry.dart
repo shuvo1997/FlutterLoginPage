@@ -33,6 +33,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -59,7 +62,17 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(20),
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _widgetOptions.elementAt(_selectedIndex),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/login');
+                },
+                child: Text('Go Back to Login'))
+          ],
+        ),
       ),
     );
   }

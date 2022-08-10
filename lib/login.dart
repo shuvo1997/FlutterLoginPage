@@ -106,10 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                 ),
