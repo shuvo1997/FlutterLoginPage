@@ -45,7 +45,7 @@ class _MyFutureBuilderTestState extends State<MyFutureBuilderTest> {
           if (snapshot.connectionState == ConnectionState.done) {
             return Center(
                 child: ListView.builder(
-                    itemCount: personsList.length,
+                    itemCount: snapshot.data?.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
