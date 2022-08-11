@@ -58,7 +58,8 @@ class _MyFutureBuilderTestState extends State<MyFutureBuilderTest> {
                             personsList[index].name,
                             style: const TextStyle(fontSize: 20),
                           ),
-                          subtitle: Text(personsList[index].email),
+                          subtitle: Text(
+                              '${personsList[index].email}\n${personsList[index].age}'),
                           trailing: const Icon(Icons.menu),
                           onTap: () {
                             print('$index pressed');
