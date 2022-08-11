@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginui/fetch-data-from-api.dart';
+import 'package:loginui/fetech-data-hard.dart';
 import 'package:loginui/future-builder.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,10 +15,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     MyFutureBuilderTest(),
     AlbumFetchExample(),
-    Text(
-      'Profile Page',
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-    )
+    EmployeeDataFetch(),
   ];
 
   void _onItemTapped(int index) {

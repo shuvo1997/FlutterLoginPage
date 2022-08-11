@@ -44,9 +44,11 @@ class _AlbumFetchExampleState extends State<AlbumFetchExample> {
                 itemCount: albums?.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(albums![index].title),
-                    subtitle: Text(albums![index].userId.toString()),
+                  return Card(
+                    child: ListTile(
+                      title: Text(albums![index].title),
+                      subtitle: Text(albums[index].userId.toString()),
+                    ),
                   );
                 });
           } else if (snapshot.hasError) {
