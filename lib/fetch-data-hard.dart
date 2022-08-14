@@ -15,13 +15,21 @@ class EmployeeDataFetch extends StatefulWidget {
 class _EmployeeDataFetchState extends State<EmployeeDataFetch> {
   Future<List<Employee>?> fetchEmployee() async {
     final response =
+        await http.get(Uri.parse('https://reqres.in/api/users?page=1'));
+
+    final response1 =
         await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response1.statusCode == 200) {
       // Iterable l = json.decode(response.body);
-      EmployeeResponse employees =
+      EmployeeResponse employeesPage1 =
           EmployeeResponse.fromJson(json.decode(response.body));
-      return employees.employee;
+
+      EmployeeResponse employeesPage2 =
+          EmployeeResponse.fromJson(json.decode(response1.body));
+
+      var newEmployeeList = employeesPage1.employee! + employeesPage2.employee!;
+      return newEmployeeList;
     } else {
       throw Exception('Failed to load data');
     }

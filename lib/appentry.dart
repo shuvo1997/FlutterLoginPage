@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loginui/fetch-data-from-api.dart';
-import 'package:loginui/fetech-data-hard.dart';
+import 'package:loginui/fetch-data-hard.dart';
 import 'package:loginui/future-builder.dart';
+import 'package:http/http.dart' as http;
+import 'create-employee.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,6 +54,16 @@ class _HomePageState extends State<HomePage> {
           iconSize: 30,
           onTap: _onItemTapped,
           elevation: 5,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CreateEmployeeForm()));
+          },
+          backgroundColor: Colors.blueGrey,
+          child: const Icon(Icons.add),
         ),
         body: Center(child: _widgetOptions.elementAt(_selectedIndex)));
   }

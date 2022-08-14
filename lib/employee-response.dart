@@ -59,3 +59,36 @@ class Support {
     text = json['text'];
   }
 }
+
+class SingleEmployee {
+  Employee data;
+  Support support;
+
+  SingleEmployee({required this.data, required this.support});
+
+  factory SingleEmployee.fromJson(Map<String, dynamic> json) {
+    return SingleEmployee(
+        data: Employee.fromJson(json['data']),
+        support: Support.fromJson(json['support']));
+  }
+}
+
+class CreateEmployeeResponse {
+  final String name;
+  final String job;
+  final String id;
+  final String createdAt;
+
+  const CreateEmployeeResponse(
+      {required this.name,
+      required this.job,
+      required this.id,
+      required this.createdAt});
+  factory CreateEmployeeResponse.fromJson(Map<String, dynamic> json) {
+    return CreateEmployeeResponse(
+        name: json['name'],
+        job: json['job'],
+        id: json['id'],
+        createdAt: json['createdAt']);
+  }
+}

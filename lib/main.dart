@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
       },
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:loginui/employee-response.dart';
+import 'package:http/http.dart' as http;
 
 class DetailsPage extends StatefulWidget {
   final Employee employee;
@@ -10,6 +13,18 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  Future<Employee> _fetchEmployee() async {
+    final response = await http
+        .get(Uri.parse('https://reqres.in/api/users/${widget.employee.id}'));
+    if (response.statusCode == 200) {
+      Employee employee =
+          SingleEmployee.fromJson(json.decode(response.body)).data;
+      return employee;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   @override
   DetailsPage get widget => super.widget;
   @override
@@ -19,18 +34,25 @@ class _DetailsPageState extends State<DetailsPage> {
         title: const Text("Details Page"),
       ),
       body: Container(
-        padding: const EdgeInsets.all(10.0),
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            Image.network(widget.employee.avatar!),
-            Text(
-              '${widget.employee.firstName!} ${widget.employee.lastName!}',
-              style: const TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-      ),
+          padding: const EdgeInsets.all(10.0),
+          alignment: Alignment.center,
+          child: FutureBuilder<Employee>(
+              future: _fetchEmployee(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: [
+                      Image.network(snapshot.data!.avatar!),
+                      Text(
+                          '${snapshot.data!.firstName} ${snapshot.data!.lastName}')
+                    ],
+                  );
+                }
+                if (snapshot.hasError) {
+                  throw Exception('Exception in future builder');
+                }
+                return const CircularProgressIndicator();
+              })),
     );
   }
 }
