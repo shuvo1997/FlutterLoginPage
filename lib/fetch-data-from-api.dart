@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:loginui/album.dart';
+import 'package:loginui/models/album.dart';
 
 class AlbumFetchExample extends StatefulWidget {
   const AlbumFetchExample({Key? key}) : super(key: key);

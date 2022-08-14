@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:loginui/employee-response.dart';
+import 'package:loginui/models/create-employee-response.dart';
+import 'package:loginui/models/employee-response.dart';
 
 class CreateEmployeeForm extends StatefulWidget {
   const CreateEmployeeForm({Key? key}) : super(key: key);

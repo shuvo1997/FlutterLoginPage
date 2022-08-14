@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:loginui/employee-response.dart';
+import 'package:loginui/models/employee-response.dart';
+import 'package:loginui/models/employee.dart';
 import 'package:http/http.dart' as http;
+import 'package:loginui/models/single-employee.dart';
 
 class DetailsPage extends StatefulWidget {
   final Employee employee;

@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:loginui/details-page.dart';
-import 'package:loginui/employee-response.dart';
+import 'package:loginui/models/employee-response.dart';
 import 'package:http/http.dart' as http;
+import 'package:loginui/models/employee.dart';
 
 class EmployeeDataFetch extends StatefulWidget {
   const EmployeeDataFetch({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class EmployeeDataFetch extends StatefulWidget {
 }
 
 class _EmployeeDataFetchState extends State<EmployeeDataFetch> {
-  Future<List<Employee>?> fetchEmployee() async {
+  Future<List> fetchEmployee() async {
     final response =
         await http.get(Uri.parse('https://reqres.in/api/users?page=1'));
 
@@ -42,11 +43,11 @@ class _EmployeeDataFetchState extends State<EmployeeDataFetch> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Employee>?>(
+    return FutureBuilder<List>(
         future: fetchEmployee(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<Employee>? employees = snapshot.data;
+            List? employees = snapshot.data;
             return ListView.builder(
                 itemCount: employees?.length,
                 scrollDirection: Axis.vertical,
