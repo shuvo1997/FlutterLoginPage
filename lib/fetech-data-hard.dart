@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:loginui/details-page.dart';
 import 'package:loginui/employee-response.dart';
 import 'package:http/http.dart' as http;
 
@@ -57,8 +58,11 @@ class _EmployeeDataFetchState extends State<EmployeeDataFetch> {
                     return Card(
                       child: ListTile(
                         leading: Image.network(avatar),
-                        title: Text('ID: $id $fName $lName'),
+                        title: Text('$fName $lName'),
                         subtitle: Text('$email'),
+                        onTap: () {
+                          _sendDataToDetailsPage(context, employees[index]);
+                        },
                       ),
                     );
                   }
@@ -70,4 +74,9 @@ class _EmployeeDataFetchState extends State<EmployeeDataFetch> {
           return const CircularProgressIndicator();
         });
   }
+}
+
+void _sendDataToDetailsPage(BuildContext context, Employee employee) {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => DetailsPage(employee: employee)));
 }

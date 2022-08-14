@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: const Text('Home'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
