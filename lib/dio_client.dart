@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loginui/models/Post.dart';
@@ -23,14 +21,13 @@ class DioClient {
     try {
       final response = await dio.get(postsEndpoint);
       var posts = response.data;
-      debugPrint(response.data.toString());
       List<Post> listPosts = [];
       for (var post in posts) {
         listPosts.add(Post.fromJson(post));
       }
       return listPosts;
     } on DioError catch (e) {
-      print(e.stackTrace);
+      debugPrint(e.stackTrace.toString());
       throw Exception('Error in list posts');
     }
   }

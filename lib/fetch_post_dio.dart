@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginui/models/Post.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'dio_client.dart';
 
 class FetchPostsUsingDio extends StatefulWidget {
@@ -10,7 +11,7 @@ class FetchPostsUsingDio extends StatefulWidget {
 }
 
 class _FetchPostsUsingDioState extends State<FetchPostsUsingDio> {
-  late DioClient dioClient;
+  DioClient dioClient = DioClient();
   late Future<Post> post;
   late Future<List<Post>> posts;
   late int index;
@@ -19,7 +20,7 @@ class _FetchPostsUsingDioState extends State<FetchPostsUsingDio> {
   @override
   void initState() {
     super.initState();
-    dioClient = DioClient();
+    dioClient.dio.interceptors.add(PrettyDioLogger());
   }
 
   @override
