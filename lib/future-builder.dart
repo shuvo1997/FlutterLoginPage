@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginui/person-model.dart';
+import 'package:loginui/models/person-model.dart';
 
 class MyFutureBuilderTest extends StatefulWidget {
   const MyFutureBuilderTest({Key? key}) : super(key: key);

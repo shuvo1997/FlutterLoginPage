@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:loginui/fetch-data-from-api.dart';
 import 'package:loginui/fetch-data-hard.dart';
 import 'package:loginui/future-builder.dart';
-import 'package:http/http.dart' as http;
 import 'create-employee.dart';
+import 'fetch_post_dio.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     MyFutureBuilderTest(),
     AlbumFetchExample(),
     EmployeeDataFetch(),
+    FetchPostsUsingDio(),
   ];
 
   void _onItemTapped(int index) {
@@ -39,11 +40,15 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: Colors.blue,
                 icon: Icon(Icons.home)),
             BottomNavigationBarItem(
-                label: 'Search Page',
+                label: 'Fetch Albums Page',
                 backgroundColor: Colors.blue,
                 icon: Icon(Icons.search)),
             BottomNavigationBarItem(
-                label: 'Profile Page',
+                label: 'Fetch Employee Page',
+                backgroundColor: Colors.blue,
+                icon: Icon(Icons.person)),
+            BottomNavigationBarItem(
+                label: 'Fetch Posts',
                 backgroundColor: Colors.blue,
                 icon: Icon(Icons.person)),
           ],
